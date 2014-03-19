@@ -3,7 +3,7 @@
 //  LXActivityDemoTests
 //
 //  Created by lixiang on 14-3-17.
-//  Copyright (c) 2014年 iMyQuan. All rights reserved.
+//  Copyright (c) 2014年 lcolco. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
