@@ -103,6 +103,7 @@
     self = [super init];
     if (self) {
         //初始化背景视图，添加手势
+        self.alpha = 0.0;
         self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         self.backgroundColor = WINDOW_COLOR;
         self.userInteractionEnabled = YES;
@@ -119,9 +120,14 @@
     return self;
 }
 
-- (void)showInView:(UIView *)view
+- (void)show
 {
-    [[UIApplication sharedApplication].delegate.window.rootViewController.view addSubview:self];
+    [[UIApplication sharedApplication].delegate.window addSubview:self];
+    [UIView animateWithDuration:ANIMATE_DURATION animations:^{
+        self.alpha = 1.0;
+        [self.backGroundView setFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-self.LXActivityHeight, [UIScreen mainScreen].bounds.size.width, self.LXActivityHeight)];
+    } completion:^(BOOL finished) {
+    }];
 }
 
 #pragma mark - Praviate method
@@ -235,11 +241,6 @@
         
         self.postionIndexNumber++;
     }
-    
-    [UIView animateWithDuration:ANIMATE_DURATION animations:^{
-        [self.backGroundView setFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-self.LXActivityHeight, [UIScreen mainScreen].bounds.size.width, self.LXActivityHeight)];
-    } completion:^(BOOL finished) {
-    }];
 }
 
 

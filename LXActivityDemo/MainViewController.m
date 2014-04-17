@@ -8,7 +8,9 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController ()
+@interface MainViewController () {
+    LXActivity *lxActivity;
+}
 
 @end
 
@@ -71,8 +73,10 @@
         self.tapIndex = 0;
     }
     
-    LXActivity *lxActivity = [[LXActivity alloc] initWithTitle:@"分享到社交平台" delegate:self cancelButtonTitle:@"取消" ShareButtonTitles:shareButtonTitleArray withShareButtonImagesName:shareButtonImageNameArray];
-    [lxActivity showInView:self.view];
+    if (!lxActivity) {
+        lxActivity = [[LXActivity alloc] initWithTitle:@"分享到社交平台" delegate:self cancelButtonTitle:@"取消" ShareButtonTitles:shareButtonTitleArray withShareButtonImagesName:shareButtonImageNameArray];
+    }
+    [lxActivity show];
 
 }
 
